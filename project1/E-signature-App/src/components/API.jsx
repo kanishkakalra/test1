@@ -1,15 +1,20 @@
-  import { useEffect, useState } from "react"
+
+import { useEffect, useState } from "react"
  export function Testing (){
 
     const[api, setApi] = useState([])
      
     useEffect(()=>{
-        const fetchData =async ()=>{
-            const result = await fetch("https://dummy-json.mock.beeceptor.com/todos")
-            const data = await result.json()
-            setApi(data)
-        }
-      fetchData(); 
+      //   const fetchData =async ()=>{
+      //       const result = await fetch("https://dummy-json.mock.beeceptor.com/todos")
+      //       const data = await result.json()
+      //       setApi(data)
+      //   }
+      // fetchData(); 
+      fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+      .then(res => res.json())
+      .then((data)=>setApi(data.todos))
+     
     },[])
      
     
@@ -22,7 +27,7 @@
         <h1>Things you can do</h1>
         {
             api.map((curData)=>{
-                return <li key={curData.id}>{curData.title}</li>
+                return <li key={curData.id}>{curData.todo}</li>
             })
         }
     </ul>
