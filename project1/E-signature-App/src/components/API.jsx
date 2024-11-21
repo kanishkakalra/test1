@@ -11,15 +11,12 @@ import { useEffect, useState } from "react"
       //       setApi(data)
       //   }
       // fetchData(); 
-      fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+      fetch("https://dummy-json.mock.beeceptor.com/todos")
       .then(res => res.json())
-      .then((data)=>setApi(data.todos))
+      .then((data)=>setApi(data))
      
     },[])
-     
-    
-  
-   
+
   return (
     <>
     <h1>Hello Api </h1>
@@ -27,7 +24,7 @@ import { useEffect, useState } from "react"
         <h1>Things you can do</h1>
         {
             api.map((curData)=>{
-                return <li key={curData.id}>{curData.todo}</li>
+                return <li key={curData.id}>{curData.title}</li>
             })
         }
     </ul>
